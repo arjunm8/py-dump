@@ -44,6 +44,7 @@ lin_model.fit(x_train_for_line_fitting, y_train_for_line_fitting)
 
 #Plot the line
 #plt.scatter(x_train, y_train, color='black')
+#reshape to prevent (n,1) dimension issue in numpy
 plt.plot(x.reshape((len(x),1)),lin_model.predict(x.reshape((len(x),1))),color='blue')
 plt.xlabel('x-input feature')
 plt.ylabel('y-target values')
