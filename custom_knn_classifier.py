@@ -13,7 +13,7 @@ def majority_vote(votes):
     """will create a dict of list item counts
     and return the one with max count"""
     vote_counts = {}
-    #if you can't even understand this then you're a damn noob
+    #if you can't even understand this part then don't even try to read ahead
     for vote in votes:
         if vote in vote_counts:
             vote_counts[vote] +=1            
@@ -71,6 +71,7 @@ def generate_synth_data(n=50):
     """generate n x 2 sets of of synthetic/random points with classes 1,0"""
     #join two points[] arrays along axis0(rows) each of normal distributions of
     # mean 0,deviation=1 and mean 1,deviation 1 and shape(n,2)
+	#Random variates rvs(loc=0, scale=1, size=1, random_state=None)
     points = np.concatenate((ss.norm(0,1).rvs((n,2)),ss.norm(1,1).rvs((n,2))),axis=0)
     #generate the same number of 0s and 1s of the size of 1st and second array
     #and join them along axis0

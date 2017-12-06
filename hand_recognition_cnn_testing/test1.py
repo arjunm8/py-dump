@@ -134,8 +134,8 @@ if TRAINING_MODE:
     print('Saved trained model and weights')
 else:
     model = keras.models.load_model("deep_saved_model_002.h5")
-    #model.load_weights("lg_deep_saved_weights_001.h5")
-    cap()
+    model.load_weights("lg_deep_saved_weights_001.h5")
+    #cap()
     
 
 

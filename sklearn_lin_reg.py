@@ -48,7 +48,8 @@ lin_model.fit(x_train_for_line_fitting, y_train_for_line_fitting)
 
 #Plotting
 plt.scatter(x_train, y_train, color='black')
-#reshaping x to (1,1) matrix as well coz sklearn takes and returns matrices not single values
+#reshaping x to (x_length,1) matrix as well since sklearn takes and returns matrices not 1d arrays, 
+#(1,x_length) should work too as long as it's the same during fitting
 #x is the x-coords, and lin_model.predict returns the y coords based on the x coords and the training data
 plt.plot(x.reshape((len(x),1)),lin_model.predict(x.reshape((len(x),1))),color='blue')
 plt.xlabel('x-input feature')
