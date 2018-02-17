@@ -24,15 +24,19 @@ while True:
     #frame = cv2.bitwise_and(frame,frame,mask=mask)
 
     
+    #coz initial recording orientation was sideways and autistic
+    #frame =  cv2.transpose(frame).
+    #frame = cv2.flip(frame,0)
     
-    frame =  cv2.transpose(frame)
-    frame = cv2.flip(frame,0)
+    #crop
+    frame = frame[:480,:480]
+    
     cv2.imshow('original',frame)
-    frame = cv2.resize(frame,(64,64))
+    #frame = cv2.resize(frame,(128,128))
     if cv2.waitKey(1) & 0xFF == ord('f'):
         active = False if active else True
     if active:
-        #cv2.imwrite("new_fist/nfist "+str(count)+".jpg",frame)
+        cv2.imwrite("fresh_data/five"+str(count)+".jpg",frame)
         print("cap count:",count)
         count+=1
     if cv2.waitKey(2) & 0xFF == ord(' '):

@@ -213,7 +213,9 @@ cv2.destroyAllWindows()
 
 
 #face recog using haar cascade classifier(haar cascades are features se..meh just go google)
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('palm.xml')
+
 cap = cv2.VideoCapture(0)
 
 while True:

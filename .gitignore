@@ -3,3 +3,5 @@
 *.jpg
 *.png
 *.gz
+*.txt
+/Daily activities and sports classification using sensor data/sensor_dataset/*
