@@ -10,6 +10,7 @@ import numpy as np
 import time
 
 cap = cv2.VideoCapture(0)
+
 count = 0
 active = False
 while True:
@@ -29,9 +30,29 @@ while True:
     #frame = cv2.flip(frame,0)
     
     #crop
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    
+    #Apply skin color range
+    mask = cv2.inRange(hsv, low_range, upper_range)
+
+    mask = cv2.erode(mask, skinkernel, iterations = 1)
+    mask = cv2.dilate(mask, skinkernel, iterations = 1)
+    
+    #blur
+    mask = cv2.GaussianBlur(mask, (15,15), 1)
+    #cv2.imshow("Blur", mask)
+    
+    #bitwise and mask original frame
+    res = cv2.bitwise_and(roi, roi, mask = mask)
+    # color to grayscale
+    res = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
+    
+    
+    
     frame = frame[:480,:480]
     
-    cv2.imshow('original',frame)
+    
+    cv2.imshow('original',res)
     #frame = cv2.resize(frame,(128,128))
     if cv2.waitKey(1) & 0xFF == ord('f'):
         active = False if active else True
